@@ -152,13 +152,21 @@
   						}
             if(isset($_SESSION['permisos']) && $_SESSION['permisos']['pedidos'][0]){
           ?>
-            <div class="desp25" class="hide3" style="color:#0C5484">
+            <div class="desp25" style="color:#0C5484">
               <p><a href="gestion_pedido.php"> PEDIDOS </a> <!-- CAMBIA -->
               </p>
             </div>
           <?PHP
             }
+            if(isset($_SESSION['permisos']) && $_SESSION['permisos']['pedidos'][0]){
           ?>
+            <div class="desp26" style="color:#0C5484">
+              <p><a href="panel.php"> PANEL </a> <!-- CAMBIA -->
+              </p>
+            </div>
+            <?PHP
+              }
+            ?>
           </div>
   				  </div>
 			<div id="ul">

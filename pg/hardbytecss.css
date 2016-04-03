@@ -24,7 +24,7 @@ table th {
 .dropdown {
     position: relative;
     display: inline-block;
-    margin-left: 150px;
+    margin-left: 200px;
 }
 .dropdown img {
   height: 55px;
@@ -98,6 +98,9 @@ table th {
   text-decoration: none;
 }
 .desp25 a {
+  text-decoration: none;
+}
+.desp26 a {
   text-decoration: none;
 }
 #encabezado {
@@ -236,17 +239,6 @@ table th {
     display: inline;
 }
 
-.desp21 {
-    display: inline;
-    float: left;
-    font-size: 16px;
-    margin-top: -17px;
-    font-family: 'Candal', sans-serif;
-    height: 62px;
-    border: 2px solid #0C5484;
-    width: 120px;
-    text-align: center;
-}
 .desp21 p {
     margin-top: 15px;
 }
@@ -260,6 +252,9 @@ table th {
     margin-top: 15px;
 }
 .desp25 p {
+    margin-top: 15px;
+}
+.desp26 p {
     margin-top: 15px;
 }
 .desp21:hover {
@@ -277,6 +272,9 @@ table th {
 .desp25:hover {
   background-color: #0C5484;
 }
+.desp26:hover {
+  background-color: #0C5484;
+}
 .desp21:hover p a {
   color:#ffffff;
 }
@@ -292,78 +290,76 @@ table th {
 .desp25:hover p a {
   color:#ffffff;
 }
-.desp22 {
+.desp26:hover p a {
+  color:#ffffff;
+}
+.desp21 {
     display: inline;
     float: left;
-    font-size: 16px;
+    font-size: 14px;
     margin-top: -17px;
     font-family: 'Candal', sans-serif;
     height: 62px;
     border: 2px solid #0C5484;
-    width: 120px;
+    width: 100px;
+    text-align: center;
+}
+.desp22 {
+    display: inline;
+    float: left;
+    font-size: 14px;
+    margin-top: -17px;
+    font-family: 'Candal', sans-serif;
+    height: 62px;
+    border: 2px solid #0C5484;
+    width: 100px;
     text-align: center;
 }
 .desp23 {
     display: inline;
     float: left;
-    font-size: 16px;
+    font-size: 14px;
     margin-top: -17px;
     font-family: 'Candal', sans-serif;
     height: 62px;
     border: 2px solid #0C5484;
-    width: 120px;
+    width: 100px;
     text-align: center;
 }
 .desp24 {
     display: inline;
     float: left;
-    font-size: 16px;
+    font-size: 14px;
     margin-top: -17px;
     font-family: 'Candal', sans-serif;
     height: 62px;
     border: 2px solid #0C5484;
-    width: 120px;
+    width: 100px;
     text-align: center;
 }
 .desp25 {
     display: inline;
     float: left;
-    font-size: 16px;
+    font-size: 14px;
     margin-top: -17px;
     font-family: 'Candal', sans-serif;
     height: 62px;
     border: 2px solid #0C5484;
-    width: 120px;
+    width: 100px;
+    text-align: center;
+}
+.desp26 {
+    display: inline;
+    float: left;
+    font-size: 14px;
+    margin-top: -17px;
+    font-family: 'Candal', sans-serif;
+    height: 62px;
+    border: 2px solid #0C5484;
+    width: 100px;
     text-align: center;
 }
 
-.hide1 {
-    display: inline;
-    float: left;
-    color: #0C5484;
-    font-size: 16px;
-    margin-top: 0px;
-    font-family: 'Candal', sans-serif;
-    visibility: visible;
-}
-.hide2 {
-    display: inline;
-    float: left;
-    color: #0C5484;
-    font-size: 16px;
-    margin-top: 0px;
-    font-family: 'Candal', sans-serif;
-    visibility: visible;
-}
-.hide3 {
-    display: inline;
-    float: left;
-    color: #0C5484;
-    font-size: 16px;
-    margin-top: 0px;
-    font-family: 'Candal', sans-serif;
-    visibility: visible;
-}
 
 .desp3 {
     display: inline;

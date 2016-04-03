@@ -9,7 +9,7 @@
  } else {
    $db_user="root"; //my db user
    $db_host="localhost"; //my db host
-   $db_password="1234"; //my db password
+   $db_password=""; //my db password
    $db_name="hardbyte"; //my db name
  }
 ?>
