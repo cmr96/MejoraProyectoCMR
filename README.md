@@ -8,3 +8,7 @@ En proceso:
 - Coreegir error de Elementos no borrables por un pedido
 - Clientes ven sus pedidos
 - pedidos varia segun tus permisos
+- crear dashboard
+- graficos
+- tema personalizable
+- impresora pdf

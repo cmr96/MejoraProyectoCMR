@@ -366,3 +366,77 @@ table th {
     float: left;
     margin-left: 0px;
 }
+#general {
+    width: 1196px;
+    height: 660px;
+    background-color: black;
+    float: left;
+    margin-top: 50px;
+    margin-left: 50px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+#row1 {
+    width: 1196px;
+    height: 70px;
+    background-color: #424242;
+    float: left;
+    text-align: center;
+    color: #ccc;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-top: 2px solid #ccc;
+    border-left: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+}
+#row2 {
+    width: 1196px;
+    height: 590px;
+    background-color: #313131;
+    float: left;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border: 2px solid #ccc;
+}
+#colmid  {
+  width: 596px;
+  height: 590px;
+  border: 2px solid #ccc;
+  float: left;
+}
+#colizq {
+  border-bottom-left-radius: 15px;
+  width: 298px;
+  height: 590px;
+  border: 2px solid #ccc;
+  float: left;
+}
+#colder {
+  border-bottom-right-radius: 15px;
+  width: 298px;
+  height: 590px;
+  border: 2px solid #ccc;
+  float: left;
+}
+.subrow1 {
+  width: 298px;
+  height: 295px;
+  border-bottom: 2px solid #ccc;
+  float: left;
+  text-align: center;
+}
+.subrow1 h3 {
+  color: #ccc;
+}
+.subrow1 li {
+  color: #ccc;
+  text-align: left;
+  font-size: 20px;
+  margin-left: 45px;
+}
+.subrow1 li a {
+  text-decoration: none;
+  color: #ccc;
+}
+text-decoration: none;
+color: white;
