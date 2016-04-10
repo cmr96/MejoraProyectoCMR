@@ -130,12 +130,12 @@
     <img id="fotouno" src="<?php echo $_SESSION['tema'][0]; ?>"> <!-- CAMBIA -->
     <div class="<?php echo $_SESSION['tema'][5]; ?>">
       <div class="desp3">
-        <div class="<?php echo $_SESSION['tema'][11]; ?>" style="color:#0C5484;"> <!-- CAMBIA -->
+        <div class="<?php echo $_SESSION['tema'][11]; ?>" style="<?php echo $_SESSION['tema'][18]; ?>"> <!-- CAMBIA -->
         <p>
           <a href="home.php"> INICIO </a> <!-- CAMBIA -->
         </p>
       </div>
-          <div class="<?php echo $_SESSION['tema'][12]; ?>" style="background-color:#0C5484">
+          <div class="<?php echo $_SESSION['tema'][12]; ?>" style="background-color:<?php echo $_SESSION['tema'][18]; ?>">
             <p><a href="tienda.php"> TIENDA </a> <!-- CAMBIA -->
             </p>
           </div>

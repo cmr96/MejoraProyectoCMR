@@ -2,7 +2,7 @@
 session_start();
 
 if(!isset($_SESSION["tema"])){
-    $_SESSION["tema"]=array("img/logo.jpg","img/boton.jpg","dropbtn","dropdown-content","dropdown","dialog","desp","ul","encabezado","medio","final","get","desp21","desp22","desp23","desp24","desp25","desp26");
+    $_SESSION["tema"]=array("img/logo.jpg","img/boton.jpg","dropbtn","dropdown-content","dropdown","desp","ul","encabezado","medio","final","get","desp21","desp22","desp23","desp24","desp25","desp26","dialog","#0C5484");
   }
 ?>
 <?php
