@@ -1,5 +1,9 @@
-<?php
-  session_start();
+<?PHP
+session_start();
+
+if(!isset($_SESSION["tema"])){
+    $_SESSION["tema"]=array("img/logo.jpg","img/boton.jpg","dropbtn","dropdown-content","dropdown","dialog","desp","ul","encabezado","medio","final","get","desp21","desp22","desp23","desp24","desp25","desp26");
+  }
 ?>
 <?php
  include_once("./db_configuration.php");
@@ -22,7 +26,6 @@
 <body>
 	<div id="main">
 	  <!-- Inicio LOGIN-REGISTRO -->
-
 	  <script type="text/javascript">
 	  $(document).ready(function() {
 
@@ -36,6 +39,12 @@
 	  <style>
 	  #enviar {float:right;}
     .desp21 a {
+      color: white;
+    }
+    .desp212 a {
+      color: white;
+    }
+    .desp213 a {
       color: white;
     }
 	  </style>
@@ -120,23 +129,23 @@
 
 	<!-- Fin LOGIN-REGISTRO -->
 
-		<div id="encabezado">
-			<img id="fotouno" src="img/logo.jpg"> <!-- CAMBIA -->
-			<div class="desp">
+		<div id="<?php echo $_SESSION['tema'][7]; ?>">
+			<img id="fotouno" src="<?php echo $_SESSION['tema'][0]; ?>">
+			<div class="<?php echo $_SESSION['tema'][5]; ?>">
 				<div class="desp3">
-					<div class="desp21" style="background-color:#0C5484;color:#ffffff;"> <!-- CAMBIA -->
+					<div class="<?php echo $_SESSION['tema'][11]; ?>" style="background-color:<?php echo $_SESSION['tema'][18]; ?>;color:#ffffff;"> <!-- CAMBIA -->
 					<p>
 						<a href="home.php"> INICIO </a> <!-- CAMBIA -->
 					</p>
 				</div>
-						<div class="desp22" style="color:#0C5484">
+						<div class="<?php echo $_SESSION['tema'][12]; ?>" style="<?php echo $_SESSION['tema'][18]; ?>">
 							<p><a href="tienda.php"> TIENDA </a> <!-- CAMBIA -->
 							</p>
 						</div>
 					<?PHP
 						if(isset($_SESSION['permisos']) && $_SESSION['permisos']['productos'][0]){
 					?>
-						<div class="desp23" class="hide1" style="color:#0C5484">
+						<div class="<?php echo $_SESSION['tema'][13]; ?>" class="hide1" style="<?php echo $_SESSION['tema'][18]; ?>">
 							<p><a href="producto.php"> PRODUCTOS </a> <!-- CAMBIA -->
 							</p>
 						</div>
@@ -144,7 +153,7 @@
 						}
 						if(isset($_SESSION['permisos']) && $_SESSION['permisos']['usuarios'][0]){
 					?>
-						<div class="desp24" class="hide2" style="color:#0C5484">
+						<div class="<?php echo $_SESSION['tema'][14]; ?>" class="hide2" style="<?php echo $_SESSION['tema'][18]; ?>">
 							<p><a href="usuario.php"> USUARIOS </a> <!-- CAMBIA -->
 							</p>
 						</div>
@@ -152,7 +161,7 @@
   						}
             if(isset($_SESSION['permisos']) && $_SESSION['permisos']['pedidos'][0]){
           ?>
-            <div class="desp25" style="color:#0C5484">
+            <div class="<?php echo $_SESSION['tema'][15]; ?>" style="<?php echo $_SESSION['tema'][18]; ?>">
               <p><a href="gestion_pedido.php"> PEDIDOS </a> <!-- CAMBIA -->
               </p>
             </div>
@@ -160,7 +169,7 @@
             }
             if(isset($_SESSION['permisos']) && $_SESSION['permisos']['pedidos'][0]){
           ?>
-            <div class="desp26" style="color:#0C5484">
+            <div class="<?php echo $_SESSION['tema'][16]; ?>" style="<?php echo $_SESSION['tema'][18]; ?>">
               <p><a href="panel.php"> PANEL </a> <!-- CAMBIA -->
               </p>
             </div>
@@ -169,7 +178,7 @@
             ?>
           </div>
   				  </div>
-			<div id="ul">
+			<div id="<?php echo $_SESSION['tema'][6]; ?>">
 				<ul>
 				  <!-- Inicio Conect/Desconect -->
 				  <?php
@@ -201,9 +210,9 @@
 
 			<!-- Inicio Carrito -->
 
-      <div class="dropdown">
-			  <button class="dropbtn"><i class="fa fa-shopping-cart fa-2x fa-lg"></i></button>
-			  <div class="dropdown-content">
+      <div class="<?php echo $_SESSION['tema'][4]; ?>">
+			  <button class="<?php echo $_SESSION['tema'][2]; ?>"><i class="fa fa-shopping-cart fa-2x fa-lg"></i></button>
+			  <div class="<?php echo $_SESSION['tema'][3]; ?>">
 			<?PHP
       if(isset($_SESSION['carrito'])){
 
@@ -229,7 +238,7 @@
 			<!-- Fin Carrito -->
 
 		</div>
-		<div id="medio">
+		<div id="<?php echo $_SESSION['tema'][8]; ?>">
 			<p id="remem">Lideres del Sector</p>
 			<img id="fotodos" src="img/img1.jpg"> <!-- CAMBIA -->
 			<img id="fotodos" src="img/img2.jpg"> <!-- CAMBIA -->
@@ -238,13 +247,13 @@
 			<div id="acc"><h2>Productos nuevos</h2>Cada dia hay productos nuevos, no te los pierdas.</div>
 			<div id="fin"><h2>Entrega ahora mas rapida</h2>Compra ahora rapido y mejor, con nuestro nuevo servicio de entrega a domicilio.</div>
 		 <div id="boton">
-			 <img id="bot" src="img/boton.jpg"> <!-- CAMBIA -->
-			 <div id="get"><p><a href="tienda.php"><b>IR A LA TIENDA</b></a></p></div> <!-- CAMBIA -->
+			 <img id="bot" src="<?php echo $_SESSION['tema'][1]; ?>">
+			 <div id="<?php echo $_SESSION['tema'][10]; ?>"><p><a href="tienda.php"><b>IR A LA TIENDA</b></a></p></div> <!-- CAMBIA -->
 
 		</div>
 		</div>
 
-		<div id="final">
+		<div id="<?php echo $_SESSION['tema'][9]; ?>">
 			<div id="f">
 			</br>
 			  <p style="text-decoration: none;"><a href="conocenos.php">Conocenos</a></p>

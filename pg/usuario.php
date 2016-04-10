@@ -40,6 +40,12 @@ if(isset($_SESSION['permisos']) && $_SESSION['permisos']['usuarios'][0]){
       .desp24 a {
         color: white;
       }
+      .desp242 a {
+        color: white;
+      }
+      .desp243 a {
+        color: white;
+      }
   	  </style>
 
 
@@ -122,23 +128,23 @@ if(isset($_SESSION['permisos']) && $_SESSION['permisos']['usuarios'][0]){
 
   	<!-- Fin LOGIN-REGISTRO -->
 
-  		<div id="encabezado">
-  			<img id="fotouno" src="img/logo.jpg"> <!-- CAMBIA -->
-  			<div class="desp">
+  		<div id="<?php echo $_SESSION['tema'][7]; ?>">
+  			<img id="fotouno" src="<?php echo $_SESSION['tema'][0]; ?>"> <!-- CAMBIA -->
+  			<div class="<?php echo $_SESSION['tema'][5]; ?>">
   				<div class="desp3">
-  					<div class="desp21" style="color:#0C5484"> <!-- CAMBIA -->
+  					<div class="<?php echo $_SESSION['tema'][11]; ?>" style="<?php echo $_SESSION['tema'][18]; ?>"> <!-- CAMBIA -->
   					<p>
   						<a href="home.php"> INICIO </a> <!-- CAMBIA -->
   					</p>
   				</div>
-  						<div class="desp22" style="color:#0C5484">
+  						<div class="<?php echo $_SESSION['tema'][12]; ?>" style="<?php echo $_SESSION['tema'][18]; ?>">
   							<p><a href="tienda.php"> TIENDA </a> <!-- CAMBIA -->
   							</p>
   						</div>
   					<?PHP
   						if(isset($_SESSION['permisos']) && $_SESSION['permisos']['productos'][0]){
   					?>
-  						<div class="desp23" class="hide1" style="color:#0C5484">
+  						<div class="<?php echo $_SESSION['tema'][13]; ?>" class="hide1" style="<?php echo $_SESSION['tema'][18]; ?>">
   							<p><a href="producto.php"> PRODUCTOS </a> <!-- CAMBIA -->
   							</p>
   						</div>
@@ -146,7 +152,7 @@ if(isset($_SESSION['permisos']) && $_SESSION['permisos']['usuarios'][0]){
   						}
   						if(isset($_SESSION['permisos']) && $_SESSION['permisos']['usuarios'][0]){
   					?>
-  						<div class="desp24" class="hide2" style="background-color:#0C5484;color:#ffffff;">
+  						<div class="<?php echo $_SESSION['tema'][14]; ?>" class="hide2" style="background-color:<?php echo $_SESSION['tema'][18]; ?>;color:#ffffff;">
   							<p><a href="usuario.php"> USUARIOS </a> <!-- CAMBIA -->
   							</p>
   						</div>
@@ -154,7 +160,7 @@ if(isset($_SESSION['permisos']) && $_SESSION['permisos']['usuarios'][0]){
     						}
               if(isset($_SESSION['permisos']) && $_SESSION['permisos']['pedidos'][0]){
             ?>
-              <div class="desp25" class="hide3" style="color:#0C5484">
+              <div class="<?php echo $_SESSION['tema'][15]; ?>" class="hide3" style="<?php echo $_SESSION['tema'][18]; ?>">
                 <p><a href="gestion_pedido.php"> PEDIDOS </a> <!-- CAMBIA -->
                 </p>
               </div>
@@ -162,7 +168,7 @@ if(isset($_SESSION['permisos']) && $_SESSION['permisos']['usuarios'][0]){
                 }
                 if(isset($_SESSION['permisos']) && $_SESSION['permisos']['pedidos'][0]){
               ?>
-                <div class="desp26" style="color:#0C5484">
+                <div class="<?php echo $_SESSION['tema'][16]; ?>" style="<?php echo $_SESSION['tema'][18]; ?>">
                   <p><a href="panel.php"> PANEL </a> <!-- CAMBIA -->
                   </p>
                 </div>
@@ -171,7 +177,7 @@ if(isset($_SESSION['permisos']) && $_SESSION['permisos']['usuarios'][0]){
                 ?>
             </div>
     				  </div>
-  			<div id="ul">
+  			<div id="<?php echo $_SESSION['tema'][6]; ?>">
   				<ul>
   				  <!-- Inicio Conect/Desconect -->
   				  <?php
@@ -203,9 +209,9 @@ if(isset($_SESSION['permisos']) && $_SESSION['permisos']['usuarios'][0]){
 
   			<!-- Inicio Carrito -->
 
-        <div class="dropdown">
-  			  <button class="dropbtn"><i class="fa fa-shopping-cart fa-2x fa-lg"></i></button>
-  			  <div class="dropdown-content">
+        <div class="<?php echo $_SESSION['tema'][4]; ?>">
+  			  <button class="<?php echo $_SESSION['tema'][2]; ?>"><i class="fa fa-shopping-cart fa-2x fa-lg"></i></button>
+  			  <div class="<?php echo $_SESSION['tema'][3]; ?>">
   			<?PHP
         if(isset($_SESSION['carrito'])){
 
@@ -231,7 +237,7 @@ if(isset($_SESSION['permisos']) && $_SESSION['permisos']['usuarios'][0]){
   			<!-- Fin Carrito -->
 
   		</div>
-  		<div id="medio">
+  		<div id="<?php echo $_SESSION['tema'][8]; ?>">
 
       <style>
       #medio h1 {
@@ -251,6 +257,38 @@ if(isset($_SESSION['permisos']) && $_SESSION['permisos']['usuarios'][0]){
         border: 3px solid #0C5484;
       }
       #medio {
+        overflow: auto;
+        height: auto;
+      }
+      #medio2 h1 {
+        color: white;
+        margin-top: 0px;
+        padding-top: 30px;
+        padding-left: 20px;
+      }
+      #medio2 a {
+        color: black;
+        margin-top: 0px;
+        padding-top: 30px;
+        padding-left: 20px;
+      }
+      #medio2 {
+        overflow: auto;
+        height: auto;
+      }
+      #medio3 h1 {
+        color: white;
+        margin-top: 0px;
+        padding-top: 30px;
+        padding-left: 20px;
+      }
+      #medio3 a {
+        color: black;
+        margin-top: 0px;
+        padding-top: 30px;
+        padding-left: 20px;
+      }
+      #medio3 {
         overflow: auto;
         height: auto;
       }
@@ -321,7 +359,7 @@ if(isset($_SESSION['permisos']) && $_SESSION['permisos']['usuarios'][0]){
   </table>
 </div>
 
-<div id="final">
+<div id="<?php echo $_SESSION['tema'][9]; ?>">
   <div id="f">
   </br>
     <p style="text-decoration: none;"><a href="conocenos.php">Conocenos</a></p>
