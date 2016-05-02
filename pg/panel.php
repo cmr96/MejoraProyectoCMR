@@ -268,6 +268,13 @@
             </div>
         </div>
         <div id="subrow21">
+          <h3><u>Imprimir Resumen PDF</u></h3><br><br>
+          <div>
+            <ul>
+              <li><a href="pdf_individual.php">Informe de mi Actividad</a></li>
+              <li><a href="pdf_general.php">Informe Completo</a></li>
+            </ul>
+          </div>
         </div>
         </div>
 

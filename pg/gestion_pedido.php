@@ -258,7 +258,7 @@ if(isset($_SESSION['permisos']) && $_SESSION['permisos']['pedidos'][0]){
       }
       .table {
         background-color: white;
-        border: 3px solid #0C5484;
+        border: 3px solid <?php echo $_SESSION['tema'][18]; ?>;
       }
       #medio {
         overflow: auto;
@@ -313,7 +313,7 @@ if(isset($_SESSION['permisos']) && $_SESSION['permisos']['pedidos'][0]){
 
       if ($result = $connection->query("SELECT * FROM pedido;")) {
 
-          printf("<h1>pedidos de HardByte</h1>");
+          printf("<h1>Pedidos de HardByte</h1>");
 
       ?>
 

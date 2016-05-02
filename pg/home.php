@@ -2,11 +2,11 @@
 session_start();
 
 if(!isset($_SESSION["tema"])){
-    $_SESSION["tema"]=array("img/logo.jpg","img/boton.jpg","dropbtn","dropdown-content","dropdown","desp","ul","encabezado","medio","final","get","desp21","desp22","desp23","desp24","desp25","desp26","dialog","#0C5484");
+    $_SESSION["tema"]=array("img/logo.jpg","img/boton.jpg","dropbtn","dropdown-content","dropdown","desp","ul","encabezado","medio","final","get","desp21","desp22","desp23","desp24","desp25","desp26","dialog","#0C5484","fotodos","boton");
   }
 ?>
 <?php
- include_once("./db_configuration.php");
+ include_once("db_configuration.php");
 ?>
 <html>
 <head>
@@ -240,13 +240,13 @@ if(!isset($_SESSION["tema"])){
 		</div>
 		<div id="<?php echo $_SESSION['tema'][8]; ?>">
 			<p id="remem">Lideres del Sector</p>
-			<img id="fotodos" src="img/img1.jpg"> <!-- CAMBIA -->
-			<img id="fotodos" src="img/img2.jpg"> <!-- CAMBIA -->
-			<img id="fotodos" src="img/img3.jpg"> <!-- CAMBIA -->
+			<img id="<?php echo $_SESSION['tema'][19]; ?>" src="img/img1.jpg"> <!-- CAMBIA -->
+			<img id="<?php echo $_SESSION['tema'][19]; ?>" src="img/img2.jpg"> <!-- CAMBIA -->
+			<img id="<?php echo $_SESSION['tema'][19]; ?>" src="img/img3.jpg"> <!-- CAMBIA -->
 			<div id="cap"><h2>Lo mejor en componentes</h2>Elige las mejores piezas para tu PC en HardByte.</div>
 			<div id="acc"><h2>Productos nuevos</h2>Cada dia hay productos nuevos, no te los pierdas.</div>
 			<div id="fin"><h2>Entrega ahora mas rapida</h2>Compra ahora rapido y mejor, con nuestro nuevo servicio de entrega a domicilio.</div>
-		 <div id="boton">
+		 <div id="<?php echo $_SESSION['tema'][20]; ?>">
 			 <img id="bot" src="<?php echo $_SESSION['tema'][1]; ?>">
 			 <div id="<?php echo $_SESSION['tema'][10]; ?>"><p><a href="tienda.php"><b>IR A LA TIENDA</b></a></p></div> <!-- CAMBIA -->
 

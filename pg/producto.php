@@ -254,7 +254,7 @@ if(isset($_SESSION['permisos']) && $_SESSION['permisos']['productos'][0]){
       }
       .table {
         background-color: white;
-        border: 3px solid #0C5484;
+        border: 3px solid <?php echo $_SESSION['tema'][18]; ?>;
       }
       #medio {
         overflow: auto;
