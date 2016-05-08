@@ -638,6 +638,7 @@ table th {
   height: 590px;
   border: 2px solid #ccc;
   float: left;
+  background-color: #fff;
 }
 #colizq {
   border-bottom-left-radius: 15px;
@@ -658,6 +659,13 @@ table th {
   height: 295px;
   border-bottom: 2px solid #ccc;
   float: left;
+  background-color: #fff;
+}
+.subrow11 {
+  width: 298px;
+  height: 295px;
+  border-bottom: 2px solid #ccc;
+  float: left;
 }
 .subrow1 h3 {
   color: #ccc;
@@ -671,6 +679,21 @@ table th {
   margin-left: 45px;
 }
 .subrow1 li a {
+  text-decoration: none;
+  color: #ccc;
+}
+.subrow11 h3 {
+  color: #ccc;
+  margin-left: 55px;
+  text-align: left;
+}
+.subrow11 li {
+  color: #ccc;
+  text-align: left;
+  font-size: 20px;
+  margin-left: 45px;
+}
+.subrow11 li a {
   text-decoration: none;
   color: #ccc;
 }
@@ -1026,4 +1049,18 @@ table th {
 #subrow21 li a {
   text-decoration: none;
   color: #ccc;
+}
+.elementografico {
+  color: white;
+  background-color: #666;
+  border: 1px solid #ccc;
+  float:left;
+  width: 296px;
+  margin-top: 10px;
+}
+.htitu {
+  color: white;
+  margin-top: 20px;
+  margin-left: 35px;
+  float:left;
 }

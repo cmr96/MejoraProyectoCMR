@@ -257,7 +257,7 @@
 
       <div id="row2">
         <div  id="colizq">
-        <div class="subrow1"><br>
+        <div class="subrow11"><br>
             <h3><u>Cambiar Tema</u></h3><br><br>
             <div>
             <ul>
@@ -276,16 +276,40 @@
             </ul>
           </div>
         </div>
-        </div>
+      </div>
 
+          <!-- Grafica Barras -->
         <div id="colmid">
+
+          <?php
+
+          include 'graf_barras.php';
+
+          ?>
+
+
         </div>
 
 
         <div id="colder">
+          <!-- Grafica Circular -->
         <div class="subrow1">
+
+          <?php
+
+          include 'graf_circular.php';
+
+          ?>
+
         </div>
         <div id="subrow22">
+
+          <?php
+
+          include 'graf_area.php';
+
+          ?>
+
         </div>
         </div>
       </div>

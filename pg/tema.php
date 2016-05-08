@@ -14,7 +14,3 @@ unset($_SESSION["tema"]);
 }
 header("location: panel.php");
 ?>
-
-dialog
-
-"desp21","desp22","desp23","desp24","desp25","desp26"
