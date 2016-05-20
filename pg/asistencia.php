@@ -91,6 +91,7 @@
 
 				$result=$connection->query("
 				SELECT
+        permiso.tienda AS tienda,
 				permiso.usuarios AS usuarios,
 				permiso.productos AS productos,
         permiso.pedidos AS pedidos
@@ -158,7 +159,7 @@
             </div>
             <?PHP
               }
-              if(isset($_SESSION['permisos']) && $_SESSION['permisos']['pedidos'][0]){
+              if(isset($_SESSION['permisos']) && $_SESSION['permisos']['tienda'][0]){
             ?>
               <div class="<?php echo $_SESSION['tema'][16]; ?>" style="<?php echo $_SESSION['tema'][18]; ?>">
                 <p><a href="panel.php"> PANEL </a> <!-- CAMBIA -->

@@ -102,6 +102,7 @@ if(isset($_SESSION['permisos']) && $_SESSION['permisos']['pedidos'][0]){
 
   				$result=$connection->query("
   				SELECT
+          permiso.tienda AS tienda,
   				permiso.usuarios AS usuarios,
   				permiso.pedidos AS pedidos,
           permiso.pedidos AS pedidos
@@ -145,7 +146,7 @@ if(isset($_SESSION['permisos']) && $_SESSION['permisos']['pedidos'][0]){
   							</p>
   						</div>
   					<?PHP
-  						if(isset($_SESSION['permisos']) && $_SESSION['permisos']['pedidos'][0]){
+  						if(isset($_SESSION['permisos']) && $_SESSION['permisos']['productos'][0]){
   					?>
   						<div class="<?php echo $_SESSION['tema'][13]; ?>" class="hide1" style="color:#0C5484;">
   							<p><a href="producto.php"> PRODUCTOS </a> <!-- CAMBIA -->
@@ -169,7 +170,7 @@ if(isset($_SESSION['permisos']) && $_SESSION['permisos']['pedidos'][0]){
             </div>
             <?PHP
               }
-              if(isset($_SESSION['permisos']) && $_SESSION['permisos']['pedidos'][0]){
+              if(isset($_SESSION['permisos']) && $_SESSION['permisos']['tienda'][0]){
             ?>
               <div class="<?php echo $_SESSION['tema'][16]; ?>" style="<?php echo $_SESSION['tema'][18]; ?>">
                 <p><a href="panel.php"> PANEL </a> <!-- CAMBIA -->

@@ -98,6 +98,7 @@
 
 				$result=$connection->query("
 				SELECT
+        permiso.tienda AS tienda,
 				permiso.usuarios AS usuarios,
 				permiso.productos AS productos,
         permiso.pedidos AS pedidos
@@ -329,7 +330,7 @@
               </div>
               <div class='form-group col-lg-6'>
                 Password:
-                <input class='form-control' type=text name='password' required>
+                <input class='form-control' type=password name='password' required>
               </div>
               <div class='form-group col-lg-6'>
                 Correo:
@@ -375,10 +376,11 @@
         $insert="INSERT INTO usuario VALUES ('$res', 'user', '$nombre', '$apellidos', MD5('$password'), '$correo', '$telefono', '$direccion')";
                         }
         $connection->query( $insert );
-        header("refresh:0; url=home.php");
 
       ?>
 
+
+        <h4 style="margin-left:20px;color:black">USUARIO CREADO CON EXITO<h4>
 
         <?php endif ?>
 

@@ -1,5 +1,6 @@
 <?php
   session_start();
+  if(isset($_SESSION['permisos']) && $_SESSION['permisos']['tienda'][0]){
 ?>
 <?php
  include_once("./db_configuration.php");
@@ -109,6 +110,7 @@
 
 				$result=$connection->query("
 				SELECT
+        permiso.tienda AS tienda,
 				permiso.usuarios AS usuarios,
 				permiso.productos AS productos,
         permiso.pedidos AS pedidos
@@ -176,7 +178,7 @@
             </div>
           <?PHP
             }
-            if(isset($_SESSION['permisos']) && $_SESSION['permisos']['pedidos'][0]){
+            if(isset($_SESSION['permisos']) && $_SESSION['permisos']['tienda'][0]){
           ?>
             <div class="<?php echo $_SESSION['tema'][16]; ?>" style="background-color:<?php echo $_SESSION['tema'][18]; ?>;color:#ffffff;">
               <p><a href="panel.php"> PANEL </a> <!-- CAMBIA -->
@@ -268,11 +270,17 @@
             </div>
         </div>
         <div id="subrow21">
-          <h3><u>Imprimir Resumen PDF</u></h3><br><br>
+          <h3><u>Generar Resumen PDF</u></h3><br><br>
           <div>
             <ul>
               <li><a href="pdf_individual.php">Informe de mi Actividad</a></li>
+              <?PHP
+                if(isset($_SESSION['permisos']) && $_SESSION['permisos']['pedidos'][0]){
+              ?>
               <li><a href="pdf_general.php">Informe Completo</a></li>
+              <?PHP
+                }
+              ?>
             </ul>
           </div>
         </div>
@@ -328,3 +336,10 @@
 	</div>
 </body>
 </html>
+
+<?php
+}
+else{
+  header("Location:home.php");
+}
+  ?>

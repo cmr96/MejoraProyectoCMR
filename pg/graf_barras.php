@@ -7,7 +7,7 @@ include_once('db_configuration.php');
       exit();
   }
   $contenido = "";
-  if ($result = $connection->query("SELECT COUNT(*) AS Pedidos, u.correo AS Usuario FROM pedido p, usuario u WHERE p.id_usuario = u.id_usuario GROUP BY u.id_usuario ORDER BY Pedidos ASC LIMIT 3;")) {
+  if ($result = $connection->query("SELECT COUNT(*) AS Pedidos, u.correo AS Usuario FROM pedido p, usuario u WHERE p.id_usuario = u.id_usuario GROUP BY u.id_usuario ORDER BY Pedidos DESC LIMIT 3;")) {
   while($obj = $result->fetch_object()) {
       if($contenido != ""){
         $contenido .= ', ';

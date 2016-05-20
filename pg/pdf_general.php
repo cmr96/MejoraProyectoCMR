@@ -2,6 +2,7 @@
 session_start();
 require("fpdf.php");
 require("db_configuration.php");
+if(isset($_SESSION['permisos']) && $_SESSION['permisos']['pedidos'][0]){
 $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
 if ($connection->connect_errno) {
 	printf("Connection failed: %s\n", $connection->connect_error);
@@ -24,6 +25,7 @@ $pdf->Cell(60, 8, '', 0);
 $pdf->Cell(60,10,'INFORME COMPLETO: '.date('d-m-Y').'',2,2);
 $pdf->Ln(20);
 $pdf->SetFont('Arial', 'B', 9);
+$pdf->Cell(15, 8, 'Codigo');
 $pdf->Cell(50, 8, 'Usuario');
 $pdf->Cell(25, 8, 'Fecha');
 $pdf->Cell(25, 8, 'Precio');
@@ -37,6 +39,7 @@ $consulta = $connection->query('select correo, p.id_pedido, fecha, precio, obser
 if ($consulta->num_rows > 0) {
 		while($obj=$consulta->fetch_object()){
 
+			$pdf->Cell(15, 8, $obj->id_pedido, 0);
 			$pdf->Cell(50, 8, $obj->correo, 0);
 			$pdf->Cell(25, 8, $obj->fecha, 0);
 			$pdf->Cell(25, 8,  $obj->precio, 0);
@@ -55,3 +58,10 @@ if ($consulta->num_rows > 0) {
 // select p.id_pedido, fecha, precio, observaciones, nombre from pedido p, entrada_pedido ep, producto pr where p.id_pedido=ep.id_pedido and ep.id_producto=pr.id_producto where p.id_usuario in (select id_usuario from usuario where correo="carlos1m2r3@hotmail.com")
 
 ?>
+
+<?php
+}
+else{
+	header("Location:home.php");
+}
+	?>
