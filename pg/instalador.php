@@ -69,8 +69,7 @@
                    printf("Connection failed: %s\n", $connection->connect_error);
                    exit();
               }else{
-                if($contenido == 'comp
-                leta'){
+                if($contenido == 'completa'){
                   include("db_sql_completa.php");
                 }else{
                   include("db_sql.php");
@@ -83,9 +82,9 @@
                 fwrite($file, "$"."host="."'".$host."';"."\n");
                 fwrite($file, "?>"."\n");
                 fclose($file);
-                unlink('instalador.php');
-                unlink('db_sql.php');
-                unlink('db_sql_completa.php');
+                unlink('instaladora.php');
+                unlink('db_sqla.php');
+                unlink('db_sql_completaa.php');
                 header('Location:home.php');
               }
           }

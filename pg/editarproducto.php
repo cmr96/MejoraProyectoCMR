@@ -1,9 +1,14 @@
-<?php
+<?PHP
+include_once("db_configuration.php");
+$connection = new mysqli($db_host, $db_user, $db_password, $db_name);
+if ($result = $connection->query("SELECT * FROM usuario;")){
+
 session_start();
-if(isset($_SESSION['permisos']) && $_SESSION['permisos']['productos'][1]){
-?>
-<?php
- include_once("./db_configuration.php");
+
+if(!isset($_SESSION["tema"])){
+    $_SESSION["tema"]=array("img/logo.jpg","img/boton.jpg","dropbtn","dropdown-content","dropdown","desp","ul","encabezado","medio","final","get","desp21","desp22","desp23","desp24","desp25","desp26","dialog","#0C5484","fotodos","boton");
+  }
+  if(isset($_SESSION['permisos']) && $_SESSION['permisos']['productos'][1]){
 ?>
 <html>
 <head>
@@ -329,11 +334,12 @@ if (isset($_POST["guardar"])){
 </div>
 </body>
 </html>
-
-
 <?php
 }
 else{
   header("Location:home.php");
 }
-  ?>
+}else{
+   header('Location: instalador.php');
+}
+?>

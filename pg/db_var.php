@@ -1,8 +1,6 @@
 <?php
-
 $usuario='root';
-$host='localhost';
-$bd='hardbyte';
 $password='';
-
+$bd='hardbyte';
+$host='localhost';
 ?>
