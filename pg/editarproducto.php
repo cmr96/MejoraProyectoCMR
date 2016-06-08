@@ -1,4 +1,5 @@
 <?PHP
+error_reporting(0);
 include_once("db_configuration.php");
 $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
 if ($result = $connection->query("SELECT * FROM usuario;")){
@@ -212,34 +213,41 @@ if(!isset($_SESSION["tema"])){
 				</ul>
 			</div>
 
-			<!-- Inicio Carrito -->
+      <!-- Inicio del Carrito -->
+
 
       <div class="<?php echo $_SESSION['tema'][4]; ?>">
-			  <button class="<?php echo $_SESSION['tema'][2]; ?>"><i class="fa fa-shopping-cart fa-2x fa-lg"></i></button>
-			  <div class="<?php echo $_SESSION['tema'][3]; ?>">
-			<?PHP
+        <button class="<?php echo $_SESSION['tema'][2]; ?>"><i class="fa fa-shopping-cart fa-2x fa-lg"></i></button>
+        <div class="<?php echo $_SESSION['tema'][3]; ?>">
+      <?PHP
       if(isset($_SESSION['carrito'])){
 
-      	$connection = new mysqli($db_host, $db_user, $db_password, $db_name);
+        $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
         foreach($_SESSION['carrito'] as $id => $cantidad){
                     if($cantidad > 0){
 
               if ($result = $connection->query("SELECT * FROM producto WHERE id_producto='$id'")) {
                   while($obj = $result->fetch_object()) {
-                      echo "<a href='descripcion.php?id_producto=$obj->id_producto'><img src='img/".$obj->foto."'><br>";
+                      echo "<a href='descripcion.php?id_producto=$obj->id_producto'>";
+                      ?>
+                      <img style="width:50px;height:50px;" id="fotousuario" src="data:image/jpg;base64,<?php echo base64_encode($obj->foto);?>" >
+                      <?php
+                      echo "<br>";
                       echo substr($obj->nombre, 0, 12)."...<br>";
                       echo "Cantidad: ".$cantidad."</a><br>";
                   }
                 }
         }
       }
-    }
-			?>
+      }
+      ?>
         <a href="pedido.php"><p>Ver Carrito</p></a>
-			  </div>
-			</div>
+        </div>
+      </div>
 
-			<!-- Fin Carrito -->
+
+
+      <!-- Fin Carrito -->
 
 		</div>
 		<div id="<?php echo $_SESSION['tema'][8]; ?>">
@@ -275,13 +283,13 @@ if(!isset($_SESSION["tema"])){
                 while($obj = $result->fetch_object()) {
                     //PRINTING EACH ROW
 
-                    echo "<form action='editarproducto.php' method='post'>";
+                    echo "<form action='editarproducto.php' method='post' enctype='multipart/form-data'>";
                     echo "<div class='container-page'>";
                     echo "<div id='nor' class='form-group col-lg-6'><b>id_producto: </b>".$obj->id_producto."</div></br></br>";
                     echo "<div class='form-group col-lg-6'><input class='ev' type='hidden'></div>";
                     echo "<div class='form-group col-lg-6'>Nombre: <input class='form-control' type='text' name='dos' required value='".$obj->nombre."'></div>";
                     echo "<div class='form-group col-lg-6'>Precio_unit: <input class='form-control' type='number' name='tres' required value='".$obj->precio_unit."'></div>";
-                    echo "<div class='form-group col-lg-6'>Foto: <input class='form-control' type='text' name='cuatro' required value='".$obj->foto."'></div>";
+                    echo "<div class='form-group col-lg-6'>Foto: <input class='form-control' type='file' name='cuatro' required></div>";
                     echo "<div class='form-group col-lg-6'>Stock: <input class='form-control' type='number' name='seis' required value='".$obj->stock."'></div>";
                     echo "<div class='form-group col-lg-6'>Caracteristicas: <textarea class='form-control' name='ocho' rows='5'>".$obj->caracteristicas."</textarea></div>";
                     echo "<div class='form-group col-lg-6'>Categoria: <input class='form-control' type='text' name='siete' required value='".$obj->categoria."'></div>";
@@ -309,13 +317,14 @@ if (isset($_POST["guardar"])){
             printf("Conexion fallida: %s\n", $mysqli->connect_error);
             exit();
         }
+        $cuatro =$_POST['cuatro'];
+        $cuatro = addslashes(file_get_contents($_FILES['cuatro']['tmp_name']));
 
-        $consulta="UPDATE producto SET id_producto='".$_POST['uno']."', nombre='".$_POST['dos']."',precio_unit='".$_POST['tres']."',foto='".$_POST['cuatro']."',stock='".$_POST['seis']."',categoria='".$_POST['siete']."',caracteristicas='".$_POST['ocho']."' WHERE id_producto='".$_POST['uno']."';";
+        $consulta="UPDATE producto SET id_producto='".$_POST['uno']."', nombre='".$_POST['dos']."',precio_unit='".$_POST['tres']."',foto='".$cuatro."',stock='".$_POST['seis']."',categoria='".$_POST['siete']."',caracteristicas='".$_POST['ocho']."' WHERE id_producto='".$_POST['uno']."';";
                    if ($connection->query($consulta)) {
                    echo "<div class='alert alert-success'><strong>¡Hecho!</strong> La accion se ha realizado con exito.</div>";
                    }
        $connection->close();
-       header("refresh:0; url=producto.php");
 
   }
 

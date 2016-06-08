@@ -213,34 +213,41 @@ if(!isset($_SESSION["tema"])){
   				</ul>
   			</div>
 
-  			<!-- Inicio Carrito -->
+        <!-- Inicio del Carrito -->
+
 
         <div class="<?php echo $_SESSION['tema'][4]; ?>">
-  			  <button class="<?php echo $_SESSION['tema'][2]; ?>"><i class="fa fa-shopping-cart fa-2x fa-lg"></i></button>
-  			  <div class=<?php echo $_SESSION['tema'][3]; ?>>
-  			<?PHP
+          <button class="<?php echo $_SESSION['tema'][2]; ?>"><i class="fa fa-shopping-cart fa-2x fa-lg"></i></button>
+          <div class="<?php echo $_SESSION['tema'][3]; ?>">
+        <?PHP
         if(isset($_SESSION['carrito'])){
 
-        	$connection = new mysqli($db_host, $db_user, $db_password, $db_name);
+          $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
           foreach($_SESSION['carrito'] as $id => $cantidad){
                       if($cantidad > 0){
 
-                if ($result = $connection->query("SELECT * FROM pedido WHERE id_pedido='$id'")) {
+                if ($result = $connection->query("SELECT * FROM producto WHERE id_producto='$id'")) {
                     while($obj = $result->fetch_object()) {
-                        echo "<a href='descripcion.php?id_pedido=$obj->id_pedido'><img src='img/".$obj->foto."'><br>";
-                        echo substr($obj->id_usuario, 0, 12)."...<br>";
+                        echo "<a href='descripcion.php?id_producto=$obj->id_producto'>";
+                        ?>
+                        <img style="width:50px;height:50px;" id="fotousuario" src="data:image/jpg;base64,<?php echo base64_encode($obj->foto);?>" >
+                        <?php
+                        echo "<br>";
+                        echo substr($obj->nombre, 0, 12)."...<br>";
                         echo "Cantidad: ".$cantidad."</a><br>";
                     }
                   }
           }
         }
-      }
-  			?>
+        }
+        ?>
           <a href="pedido.php"><p>Ver Carrito</p></a>
-  			  </div>
-  			</div>
+          </div>
+        </div>
 
-  			<!-- Fin Carrito -->
+
+
+        <!-- Fin Carrito -->
 
   		</div>
   		<div id="<?php echo $_SESSION['tema'][8]; ?>">
@@ -327,6 +334,7 @@ if(!isset($_SESSION["tema"])){
                 <th>Fecha</th>
                 <th>Precio</th>
                 <th>Observaciones</th>
+                <th>Borrar</th>
             </thead>
 
 
@@ -343,6 +351,7 @@ if(!isset($_SESSION["tema"])){
               echo "<td>".$obj->fecha."</td>";
               echo "<td>".$obj->precio."</td>";
               echo "<td>".$obj->observaciones."</td>";
+              echo "<td><a href='borrarpedido.php?id_pedido=$obj->id_pedido'><img style='height: 25px;width: 25px;' src='img/sec1.png'></a></td>";
               echo "</tr>";
           }
 

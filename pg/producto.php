@@ -212,35 +212,42 @@ if(!isset($_SESSION["tema"])){
   				</ul>
   			</div>
 
-  			<!-- Inicio Carrito -->
+        <!-- Inicio del Carrito -->
+
 
         <div class="<?php echo $_SESSION['tema'][4]; ?>">
-  			  <button class="<?php echo $_SESSION['tema'][2]; ?>"><i class="fa fa-shopping-cart fa-2x fa-lg"></i></button>
-  			  <div class="<?php echo $_SESSION['tema'][3]; ?>">
-  			<?PHP
+          <button class="<?php echo $_SESSION['tema'][2]; ?>"><i class="fa fa-shopping-cart fa-2x fa-lg"></i></button>
+          <div class="<?php echo $_SESSION['tema'][3]; ?>">
+        <?PHP
         if(isset($_SESSION['carrito'])){
 
-        	$connection = new mysqli($db_host, $db_user, $db_password, $db_name);
+          $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
           foreach($_SESSION['carrito'] as $id => $cantidad){
                       if($cantidad > 0){
 
                 if ($result = $connection->query("SELECT * FROM producto WHERE id_producto='$id'")) {
                     while($obj = $result->fetch_object()) {
-                        echo "<a href='descripcion.php?id_producto=$obj->id_producto'><img src='img/".$obj->foto."'><br>";
+                        echo "<a href='descripcion.php?id_producto=$obj->id_producto'>";
+                        ?>
+                        <img style="width:50px;height:50px;" id="fotousuario" src="data:image/jpg;base64,<?php echo base64_encode($obj->foto);?>" >
+                        <?php
+                        echo "<br>";
                         echo substr($obj->nombre, 0, 12)."...<br>";
                         echo "Cantidad: ".$cantidad."</a><br>";
                     }
                   }
           }
         }
-      }
-  			?>
+        }
+        ?>
           <a href="pedido.php"><p>Ver Carrito</p></a>
-  			  </div>
-  			</div>
+          </div>
+        </div>
 
-  			<!-- Fin Carrito -->
 
+
+        <!-- Fin Carrito -->
+        
   		</div>
   		<div id="<?php echo $_SESSION['tema'][8]; ?>">
 
@@ -339,7 +346,7 @@ if(!isset($_SESSION["tema"])){
           <a href="crearproducto.php"><button> Crear Producto </button></br></br>
 
       <?php
-
+          // echo "<td>".$obj->foto."</td>";
           //FETCHING OBJECTS FROM THE RESULT SET
           //THE LOOP CONTINUES WHILE WE HAVE ANY OBJECT (Query Row) LEFT
           while($obj = $result->fetch_object()) {
@@ -348,12 +355,16 @@ if(!isset($_SESSION["tema"])){
               echo "<td>".$obj->id_producto."</td>";
               echo "<td>".$obj->nombre."</td>";
               echo "<td>".$obj->precio_unit."</td>";
-              echo "<td>".$obj->foto."</td>";
+              echo "<td>";
+              ?>
+              <img style="width:50px;height:50px;" id="fotousuario" src="data:image/jpg;base64,<?php echo base64_encode($obj->foto);?>" >
+              <?php
+              echo "</td>";
               echo "<td>".$obj->stock."</td>";
               echo "<td>".$obj->categoria."</td>";
               echo "<td>".$obj->caracteristicas."</td>";
               echo "<td><a href='editarproducto.php?id_producto=$obj->id_producto'><img style='height: 25px;width: 25px;' src='img/sec2.jpg'></a></td>";
-              if(isset($_SESSION['permisos']) && $_SESSION['permisos']['productos'][2]){echo "<td><a href='borrarproducto.php?id_producto=$obj->id_producto'><img style='height: 25px;width: 25px;' src='img/sec1.png'></a></td>";}
+              if(isset($_SESSION['permisos']) && $_SESSION['permisos']['productos'][2]){echo "<td><a href='borrarproducto.php?id_producto=$obj->id_producto&precio_unit=$obj->precio_unit'><img style='height: 25px;width: 25px;' src='img/sec1.png'></a></td>";}
               echo "</tr>";
           }
 

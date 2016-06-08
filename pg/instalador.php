@@ -70,9 +70,79 @@
                    exit();
               }else{
                 if($contenido == 'completa'){
-                  include("db_sql_completa.php");
+                  // Name of the file
+                  $filename = 'completa.sql';
+                  // MySQL host
+                  $mysql_host = $host;
+                  // MySQL username
+                  $mysql_username = $usuario;
+                  // MySQL password
+                  $mysql_password = $password;
+                  // Database name
+                  $mysql_database = $bd;
+
+                  // Connect to MySQL server
+
+                  // Temporary variable, used to store current query
+                  $templine = '';
+                  // Read in entire file
+                  $lines = file($filename);
+                  // Loop through each line
+                  foreach ($lines as $line)
+                  {
+                  // Skip it if it's a comment
+                  if (substr($line, 0, 2) == '--' || $line == '')
+                      continue;
+
+                  // Add this line to the current segment
+                  $templine .= $line;
+                  // If it has a semicolon at the end, it's the end of the query
+                  if (substr(trim($line), -1, 1) == ';')
+                  {
+                      // Perform the query
+                      $connection->query($templine) or print('Error performing query \'<strong>' . $templine . '\': ' . mysql_error() . '<br /><br />');
+                      // Reset temp variable to empty
+                      $templine = '';
+                  }
+                  }
+                   echo "Tables imported successfully";
                 }else{
-                  include("db_sql.php");
+                  // Name of the file
+                  $filename = 'solobd.sql';
+                  // MySQL host
+                  $mysql_host = $host;
+                  // MySQL username
+                  $mysql_username = $usuario;
+                  // MySQL password
+                  $mysql_password = $password;
+                  // Database name
+                  $mysql_database = $bd;
+
+                  // Connect to MySQL server
+
+                  // Temporary variable, used to store current query
+                  $templine = '';
+                  // Read in entire file
+                  $lines = file($filename);
+                  // Loop through each line
+                  foreach ($lines as $line)
+                  {
+                  // Skip it if it's a comment
+                  if (substr($line, 0, 2) == '--' || $line == '')
+                      continue;
+
+                  // Add this line to the current segment
+                  $templine .= $line;
+                  // If it has a semicolon at the end, it's the end of the query
+                  if (substr(trim($line), -1, 1) == ';')
+                  {
+                      // Perform the query
+                      $connection->query($templine) or print('Error performing query \'<strong>' . $templine . '\': ' . mysql_error() . '<br /><br />');
+                      // Reset temp variable to empty
+                      $templine = '';
+                  }
+                  }
+                   echo "Tables imported successfully";
                 }
                 $file = fopen("db_var.php", "a");
                 fwrite($file, "<?php"."\n");
@@ -82,10 +152,10 @@
                 fwrite($file, "$"."host="."'".$host."';"."\n");
                 fwrite($file, "?>"."\n");
                 fclose($file);
-                unlink('instaladora.php');
-                unlink('db_sqla.php');
-                unlink('db_sql_completaa.php');
-                header('Location:home.php');
+                // unlink('instalador.php');
+                // unlink('db_sql.php');
+                // unlink('db_sql_completa.php');
+                // header('Location:home.php');
               }
           }
         ?>

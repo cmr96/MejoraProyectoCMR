@@ -213,34 +213,41 @@ if(!isset($_SESSION["tema"])){
 				</ul>
 			</div>
 
-			<!-- Inicio Carrito -->
+      <!-- Inicio del Carrito -->
+
 
       <div class="<?php echo $_SESSION['tema'][4]; ?>">
-			  <button class="<?php echo $_SESSION['tema'][2]; ?>"><i class="fa fa-shopping-cart fa-2x fa-lg"></i></button>
-			  <div class="<?php echo $_SESSION['tema'][3]; ?>">
-			<?PHP
+        <button class="<?php echo $_SESSION['tema'][2]; ?>"><i class="fa fa-shopping-cart fa-2x fa-lg"></i></button>
+        <div class="<?php echo $_SESSION['tema'][3]; ?>">
+      <?PHP
       if(isset($_SESSION['carrito'])){
 
-      	$connection = new mysqli($db_host, $db_user, $db_password, $db_name);
+        $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
         foreach($_SESSION['carrito'] as $id => $cantidad){
                     if($cantidad > 0){
 
               if ($result = $connection->query("SELECT * FROM producto WHERE id_producto='$id'")) {
                   while($obj = $result->fetch_object()) {
-                      echo "<a href='descripcion.php?id_producto=$obj->id_producto'><img src='img/".$obj->foto."'><br>";
+                      echo "<a href='descripcion.php?id_producto=$obj->id_producto'>";
+                      ?>
+                      <img style="width:50px;height:50px;" id="fotousuario" src="data:image/jpg;base64,<?php echo base64_encode($obj->foto);?>" >
+                      <?php
+                      echo "<br>";
                       echo substr($obj->nombre, 0, 12)."...<br>";
                       echo "Cantidad: ".$cantidad."</a><br>";
                   }
                 }
         }
       }
-    }
-			?>
+      }
+      ?>
         <a href="pedido.php"><p>Ver Carrito</p></a>
-			  </div>
-			</div>
+        </div>
+      </div>
 
-			<!-- Fin Carrito -->
+
+
+      <!-- Fin Carrito -->
 
 		</div>
 		<div id="<?php echo $_SESSION['tema'][8]; ?>">
@@ -270,7 +277,6 @@ if(!isset($_SESSION["tema"])){
 
 
       <?php
-
       printf("<h1>Crear Usuario</h1>");
       if (!isset($_POST["id_usuario"])) :
       $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
@@ -372,10 +378,9 @@ if(!isset($_SESSION["tema"])){
 
         $insert="INSERT INTO usuario VALUES ('$id_usuario', '$id_permiso', '$nombre', '$apellidos', MD5('$password'), '$correo', '$telefono', '$direccion')";
         $connection->query( $insert );
-        header("refresh:0; url=usuario.php");
 
       ?>
-
+        <h4 style="margin-left:20px;color:black">USUARIO CREADO CON EXITO<h4>
 
         <?php endif ?>
 

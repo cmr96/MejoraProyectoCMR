@@ -22,19 +22,11 @@ $link=$_GET["id_usuario"];
 
 $delete1="DELETE FROM usuario WHERE id_usuario='$link'";
 $delete2="DELETE FROM pedido WHERE id_usuario='$link'";
+$delete3="DELETE FROM entrada_pedido WHERE id_pedido IN (select id_pedido from pedido where id_usuario='$link')";
 
-$result=$connection->query("SELECT id_pedido FROM pedido WHERE id_usuario='$link'");
-$fila = $result->fetch_assoc();
-$id = $fila['id_pedido'];
-
-    $delete3="DELETE FROM entrada_pedido WHERE id_pedido='$id'";
-$connection->query($delete3);
+$connection->query( $delete3 );
 $connection->query( $delete2 );
 $connection->query( $delete1 );
-
-
-
-
 
 header("refresh:0; url=usuario.php");
 ?>

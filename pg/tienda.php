@@ -212,38 +212,42 @@ if(!isset($_SESSION["tema"])){
 				</ul>
 			</div>
 
-			<!-- Inicio Carrito -->
+      <!-- Inicio del Carrito -->
 
 
-			<div class="<?php echo $_SESSION['tema'][4]; ?>">
-			  <button class="<?php echo $_SESSION['tema'][2]; ?>"><i class="fa fa-shopping-cart fa-2x fa-lg"></i></button>
-			  <div class="<?php echo $_SESSION['tema'][3]; ?>">
-			<?PHP
+      <div class="<?php echo $_SESSION['tema'][4]; ?>">
+        <button class="<?php echo $_SESSION['tema'][2]; ?>"><i class="fa fa-shopping-cart fa-2x fa-lg"></i></button>
+        <div class="<?php echo $_SESSION['tema'][3]; ?>">
+      <?PHP
       if(isset($_SESSION['carrito'])){
 
-      	$connection = new mysqli($db_host, $db_user, $db_password, $db_name);
+        $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
         foreach($_SESSION['carrito'] as $id => $cantidad){
                     if($cantidad > 0){
 
               if ($result = $connection->query("SELECT * FROM producto WHERE id_producto='$id'")) {
                   while($obj = $result->fetch_object()) {
-                      echo "<a href='descripcion.php?id_producto=$obj->id_producto'><img src='img/".$obj->foto."'><br>";
+                      echo "<a href='descripcion.php?id_producto=$obj->id_producto'>";
+                      ?>
+                      <img style="width:50px;height:50px;" id="fotousuario" src="data:image/jpg;base64,<?php echo base64_encode($obj->foto);?>" >
+                      <?php
+                      echo "<br>";
                       echo substr($obj->nombre, 0, 12)."...<br>";
                       echo "Cantidad: ".$cantidad."</a><br>";
                   }
                 }
         }
       }
-    }
-			?>
+      }
+      ?>
         <a href="pedido.php"><p>Ver Carrito</p></a>
-			  </div>
-			</div>
+        </div>
+      </div>
 
 
 
-			<!-- Fin Carrito -->
-
+      <!-- Fin Carrito -->
+      
 		</div>
 		<div id="<?php echo $_SESSION['tema'][8]; ?>">
 
@@ -380,7 +384,9 @@ if(!isset($_SESSION["tema"])){
                 echo "<div id='pro1'>";
 
                 echo "<div id='pro2'>";
-                echo "<img src='img/$obj->foto'>";
+                ?>
+                <img id="fotousuario" src="data:image/jpg;base64,<?php echo base64_encode($obj->foto);?>" >
+                <?php
                 echo "</div>";
 
                 echo "<div id='pro3'>";

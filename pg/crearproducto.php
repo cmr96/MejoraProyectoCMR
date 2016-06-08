@@ -1,4 +1,5 @@
 <?PHP
+error_reporting(0);
 include_once("db_configuration.php");
 $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
 if ($result = $connection->query("SELECT * FROM usuario;")){
@@ -213,35 +214,41 @@ if(isset($_SESSION['permisos']) && $_SESSION['permisos']['productos'][0]){
 				  <!-- Fin Conect/Desconect -->
 				</ul>
 			</div>
+      <!-- Inicio del Carrito -->
 
-			<!-- Inicio Carrito -->
 
       <div class="<?php echo $_SESSION['tema'][4]; ?>">
-			  <button class="<?php echo $_SESSION['tema'][2]; ?>"><i class="fa fa-shopping-cart fa-2x fa-lg"></i></button>
-			  <div class="<?php echo $_SESSION['tema'][3]; ?>">
-			<?PHP
+        <button class="<?php echo $_SESSION['tema'][2]; ?>"><i class="fa fa-shopping-cart fa-2x fa-lg"></i></button>
+        <div class="<?php echo $_SESSION['tema'][3]; ?>">
+      <?PHP
       if(isset($_SESSION['carrito'])){
 
-      	$connection = new mysqli($db_host, $db_user, $db_password, $db_name);
+        $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
         foreach($_SESSION['carrito'] as $id => $cantidad){
                     if($cantidad > 0){
 
               if ($result = $connection->query("SELECT * FROM producto WHERE id_producto='$id'")) {
                   while($obj = $result->fetch_object()) {
-                      echo "<a href='descripcion.php?id_producto=$obj->id_producto'><img src='img/".$obj->foto."'><br>";
+                      echo "<a href='descripcion.php?id_producto=$obj->id_producto'>";
+                      ?>
+                      <img style="width:50px;height:50px;" id="fotousuario" src="data:image/jpg;base64,<?php echo base64_encode($obj->foto);?>" >
+                      <?php
+                      echo "<br>";
                       echo substr($obj->nombre, 0, 12)."...<br>";
                       echo "Cantidad: ".$cantidad."</a><br>";
                   }
                 }
         }
       }
-    }
-			?>
+      }
+      ?>
         <a href="pedido.php"><p>Ver Carrito</p></a>
-			  </div>
-			</div>
+        </div>
+      </div>
 
-			<!-- Fin Carrito -->
+
+
+      <!-- Fin Carrito -->
 
 		</div>
 		<div id="<?php echo $_SESSION['tema'][8]; ?>">
@@ -283,7 +290,7 @@ if(isset($_SESSION['permisos']) && $_SESSION['permisos']['productos'][0]){
       }
 
         ?>
-              <form action="" method="post" class="id_producto">
+              <form action="" method="post" enctype="multipart/form-data" class="id_producto">
         <?php
         echo "<div class='container-page'>";
         echo "<div class='col-md-6'>";
@@ -315,7 +322,7 @@ if(isset($_SESSION['permisos']) && $_SESSION['permisos']['productos'][0]){
               </div>
               <div class='form-group col-lg-6'>
                 Foto:
-                <input class='form-control' type='text' name='foto' required>
+                <input class='form-control' type='file' name='foto' required>
               </div>
               <div class='form-group col-lg-6'>
                 Stock:
@@ -349,17 +356,18 @@ if(isset($_SESSION['permisos']) && $_SESSION['permisos']['productos'][0]){
         $nombre=$_POST["nombre"];
         $precio_unit=$_POST["precio_unit"];
         $foto=$_POST["foto"];
+        $foto = addslashes(file_get_contents($_FILES['foto']['tmp_name']));
         $stock=$_POST["stock"];
         $categoria=$_POST["categoria"];
         $caracteristicas=$_POST["caracteristicas"];
 
         $insert="INSERT INTO producto VALUES ('$id_producto', '$nombre', '$precio_unit', '$foto', '$stock', '$categoria', '$caracteristicas')";
         $connection->query( $insert );
-        header("refresh:0; url=producto.php");
+
 
       ?>
 
-
+        <h4 style="margin-left:20px;color:black">PRODUCTO CREADO CON EXITO<h4>
         <?php endif ?>
 
       </div>

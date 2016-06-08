@@ -9,7 +9,7 @@
   } else {
     $db_user=$usuario; //my db user
     $db_host=$host; //my db host
-    $db_password=$password; //my db password ORIGINAL
+    $db_password=$password; //my db password 
     $db_name=$bd; //my db name
   }
 ?>
