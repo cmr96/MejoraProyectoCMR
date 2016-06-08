@@ -152,10 +152,10 @@
                 fwrite($file, "$"."host="."'".$host."';"."\n");
                 fwrite($file, "?>"."\n");
                 fclose($file);
-                // unlink('instalador.php');
-                // unlink('db_sql.php');
-                // unlink('db_sql_completa.php');
-                // header('Location:home.php');
+                unlink('instalador.php');
+                unlink('completa.sql');
+                unlink('solobd.sql');
+                header('Location:home.php');
               }
           }
         ?>
