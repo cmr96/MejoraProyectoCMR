@@ -387,7 +387,9 @@ $query1="SELECT * FROM producto WHERE id_producto='$link'";
               echo "<div id='pro1'>";
 
               echo "<div id='pro2'>";
-              echo "<img src='img/$obj->foto'>";
+              ?>
+              <img src="data:image/jpg;base64,<?php echo base64_encode($obj->foto);?>" >
+              <?php
               echo "</div>";
 
               echo "<div id='pro3'>";

@@ -8,10 +8,10 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="hardbytecss.css">
   </head>
-  <body>
+  <body style="background-color:#0C5484">
     <div style="width:1000px;margin: 0 auto;margin-top:40px;">
       <div>
-          <h1 style="margin-left:20px;margin-bottom:20px";>Hardbyte: Instalador Web</h1>
+          <h1 style="margin-left:20px;margin-bottom:20px;color:white";>Hardbyte: Instalador Web</h1>
     <div class='form-group col-lg-5'>
             <form action="" method="post">
 
@@ -36,7 +36,7 @@
             </div>
             <div class="form-group col-lg-5">
               <div class="form-group">
-                <p style="font-size:20px;margin-top:10px;">Contenido de la Base de Datos:</p>
+                <p style="font-size:20px;margin-top:10px;color:white">Contenido de la Base de Datos:</p>
               </div>
             </div>
             <div class="form-group col-lg-5">
@@ -49,7 +49,7 @@
             </div>
             <div class="form-group col-lg-5">
             <div class="form-group">
-            <input type="submit" value="Instalar" class="btn btn-primary pull-left">
+            <input style="background-color:white;color:#0C5484" type="submit" value="Instalar" class="btn btn-primary pull-left">
             </div>
             </div>
             </div>
